@@ -1,4 +1,8 @@
 # annormy-vue
+Check this page on https://authoroman.github.io/storeAnnormy/   - a project that is created for the most basic practices in Vue
+
+
+
 
 ## Project setup
 ```
