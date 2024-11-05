@@ -52,21 +52,23 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "MyHeader",
   model: {
-    props:{
+    props: {
       value: String,
-      default: ''
-    }  ,
+      default: "",
+    },
     event: "input",
   },
-  methods:{
+  methods: {
     updateInput(event) {
-      this.$emit('input', event.target.value);
-    }
-  }
-};
+      this.$emit("input", event.target.value);
+    },
+  },
+});
 </script>
 
 <style lang="less" scoped>

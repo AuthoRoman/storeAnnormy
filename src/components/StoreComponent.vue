@@ -16,12 +16,13 @@
 </template>
 
 <script>
+import { defineComponent } from "vue";
 import ProductList from "./ProductList.vue";
 import StoreHeader from "./StoreHeader.vue";
 import StorePagination from "./StorePagination.vue";
 import { mapGetters } from "vuex";
 
-export default {
+export default defineComponent({
   name: "StoreComponent",
   props: {
     searchText: {
@@ -42,7 +43,7 @@ export default {
   computed: {
     ...mapGetters(["filterProductsOptialActive"]),
   },
-};
+});
 </script>
 
 <style lang="less" scoped>

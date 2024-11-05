@@ -18,10 +18,11 @@
 </template>
 
 <script>
+import { defineComponent } from "vue";
 import ProductCard from "./ProductCard.vue";
 import { mapGetters, mapActions, mapMutations } from "vuex";
 
-export default {
+export default defineComponent({
   name: "ProductList",
   components: {
     ProductCard,
@@ -41,9 +42,9 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters(["getArray", "getCurrentPage", "getNumPage", "getInitArray",]),
+    ...mapGetters(["getArray", "getCurrentPage", "getNumPage", "getInitArray"]),
   },
-   
+
   methods: {
     ...mapActions(["setFilterProductsArray"]),
     ...mapMutations(["setCurrentNumberPage"]),
@@ -67,7 +68,7 @@ export default {
     getNumPage: "fetchData",
     getInitArray: "fetchData",
   },
-};
+});
 </script>
 
 <style scoped>

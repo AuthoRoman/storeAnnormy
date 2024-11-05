@@ -8,7 +8,7 @@ import prod7 from "../../assets/prod7.png";
 import prod8 from "../../assets/prod8.png";
 
 export default {
-  state: {
+  state: () => ({
     filterProductsOptialActive: "lastest",
     numberPage: 1,
     currentPage: 1,
@@ -80,7 +80,7 @@ export default {
       },
     ],
     filteredProducts: [], // новое свойство для хранения отфильтрованных продуктов
-  },
+  }),
   actions: {
     setFilterProductsArray(ctx, { searchTexts, filter }) {
       let newArray = ctx.state.products.filter(

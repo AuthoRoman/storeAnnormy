@@ -4,15 +4,23 @@
       <div class="popup__header">
         <span></span>
         <span>
-          <img @click="() => closePopup()" width="15" class="popup__header--close" height="15"
-            src="https://img.icons8.com/ios-glyphs/30/c89351/delete-sign.png" alt="delete-sign" />
+          <img
+            @click="() => closePopup()"
+            width="15"
+            class="popup__header--close"
+            height="15"
+            src="https://img.icons8.com/ios-glyphs/30/c89351/delete-sign.png"
+            alt="delete-sign"
+          />
         </span>
       </div>
       <div class="popup__body">
         <slot></slot>
       </div>
       <div class="popup__footer">
-        <button @click="() => closePopup()" class="popup__button--close">Close</button>
+        <button @click="() => closePopup()" class="popup__button--close">
+          Close
+        </button>
         <button class="popup__button--submit">Buy</button>
       </div>
     </div>
@@ -20,7 +28,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "PopupComponent",
 
   return: {},
@@ -36,12 +46,10 @@ export default {
       }
     });
   },
-};
+});
 </script>
 
 <style lang="less" scoped>
- 
-
 .popup {
   padding: 10px 26px;
   position: fixed;
@@ -52,18 +60,18 @@ export default {
   box-shadow: 0 0 17px 0 #c89351;
 
   &__global {
-  background: #262431ed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background: #262431ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
 
-  bottom: 0;
-}
+    bottom: 0;
+  }
 
   &__header {
     display: flex;

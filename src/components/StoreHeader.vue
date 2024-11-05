@@ -21,29 +21,26 @@
     >
       SPECIAL
     </span>
-    <span
-      
-      class="store_nav--active"
-      @click=" setVisible(!getSetVisibleCreator)"
-    >
+    <span class="store_nav--active" @click="setVisible(!getSetVisibleCreator)">
       CREATE NEW PRODUCT
     </span>
     <Transition>
-    <div v-if="getSetVisibleCreator">
+      <div v-if="getSetVisibleCreator">
         <PopupProductCreate />
-    </div>
+      </div>
     </Transition>
   </div>
 </template>
 
 <script>
-import {mapMutations,mapGetters} from 'vuex'
-import  PopupProductCreate  from "./PopupProductCreate.vue";
+import { mapMutations, mapGetters } from "vuex";
+import PopupProductCreate from "./PopupProductCreate.vue";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "StoreHeader",
-  components:{
-    PopupProductCreate
+  components: {
+    PopupProductCreate,
   },
   props: {
     filterProductsOptialActive: {
@@ -52,15 +49,15 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(['setVisible']),
+    ...mapMutations(["setVisible"]),
     updateFilter(value) {
       this.$store.dispatch("updateFilterProductsOptialActive", value);
     },
   },
-  computed:{
-    ...mapGetters(['getSetVisibleCreator'])
-  }
-};
+  computed: {
+    ...mapGetters(["getSetVisibleCreator"]),
+  },
+});
 </script>
 
 <style lang="less" scoped>
@@ -76,16 +73,16 @@ export default {
   margin: 0 10px;
   transition: all 0.6s;
   font-weight: 500;
-  &--active{
+  &--active {
     font-size: 25px;
-  color: #bcbcbc;
-  margin: 0 10px;
-  transition: all 0.6s;
-  font-weight: 500;
-  &:hover{
-    cursor: pointer;
-    color:  #C89256;
-  }
+    color: #bcbcbc;
+    margin: 0 10px;
+    transition: all 0.6s;
+    font-weight: 500;
+    &:hover {
+      cursor: pointer;
+      color: #c89256;
+    }
   }
 }
 

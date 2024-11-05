@@ -24,9 +24,10 @@
 </template>
 
 <script>
+import { defineComponent } from "vue";
 import { mapGetters, mapActions, mapMutations } from "vuex";
 
-export default {
+export default defineComponent({
   name: "StorePagination",
 
   methods: {
@@ -36,7 +37,7 @@ export default {
   computed: {
     ...mapGetters(["getNumPage", "getCurrentPage"]),
   },
-};
+});
 </script>
 
 <style lang="less" scoped>

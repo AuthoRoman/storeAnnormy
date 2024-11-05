@@ -15,20 +15,22 @@
         </span>
       </div>
       <div class="popup__body">
-         
-          <textarea   placeholder="URL image" id v-model="imgSrc" class="popup--text"/>  
-          <div class="popup__inner">
-             
+        <textarea
+          placeholder="URL image"
+          id
+          v-model="imgSrc"
+          class="popup--text"
+        />
+        <div class="popup__inner">
+          <textarea
+            placeholder="Title"
+            class="popup__title"
+            v-model="title"
+            type="text"
+            name=""
+            id=""
+          />
 
-            <textarea
-              placeholder="Title"
-              class="popup__title"
-              v-model="title"
-              type="text"
-              name=""
-              id=""
-            />
-           
           <textarea placeholder="$price" class="popup__price" v-model="price" />
         </div>
       </div>
@@ -43,34 +45,34 @@
 </template>
 
 <script>
-import { mapMutations,  } from "vuex";
-export default {
+import { defineComponent } from "vue";
+import { mapMutations } from "vuex";
+export default defineComponent({
   name: "PopupProductCreate",
 
-    data() {
-      return {
-        title: "",
-        imgSrc: "",
-        price: "",
-      };
-    },
-   
+  data() {
+    return {
+      title: "",
+      imgSrc: "",
+      price: "",
+    };
+  },
+
   methods: {
-    ...mapMutations(["createProduct", "setVisible","getFilterProductsArray"]),
-     
-     
+    ...mapMutations(["createProduct", "setVisible", "getFilterProductsArray"]),
+
     closePopup() {
       this.setVisible(false);
     },
     submit() {
       this.createProduct({
         id: Math.random(Date.now()),
-        img: this.imgSrc  ,
-        card_text: this.title  ,
-        card_price: "$" + this.price  ,
+        img: this.imgSrc,
+        card_text: this.title,
+        card_price: "$" + this.price,
         optial: "lastest",
-      })  
-      this.closePopup()
+      });
+      this.closePopup();
     },
   },
   mounted() {
@@ -80,12 +82,10 @@ export default {
       }
     });
   },
-};
+});
 </script>
 
 <style lang="less" scoped>
- 
-
 .popup {
   padding: 10px 26px;
   position: fixed;
@@ -97,16 +97,16 @@ export default {
 
   &__global {
     background: #262431ed;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-      position: fixed;
-      right: 0;
-      left: 0;
-      top: 0;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
 
-      bottom: 0;
+    bottom: 0;
   }
 
   &__header {
@@ -120,39 +120,35 @@ export default {
       }
     }
   }
-  &__inner{
+  &__inner {
     display: flex;
     flex-direction: column;
-     justify-content: space-between;
-      
+    justify-content: space-between;
   }
 
-  &__title{
+  &__title {
     max-height: 80px;
     max-width: 200px;
   }
 
-  &--title{
+  &--title {
     max-width: 300px;
     padding: 5px;
-    width:100%;
+    width: 100%;
   }
 
-  &--text{
-  max-width: 170px; 
-  max-height: 218px;
-   height: 218px;
-   width: 170px;
-   margin: 15px;
+  &--text {
+    max-width: 170px;
+    max-height: 218px;
+    height: 218px;
+    width: 170px;
+    margin: 15px;
   }
-
- 
 
   &__body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
   }
 
   &__footer {
@@ -162,18 +158,16 @@ export default {
     align-items: center;
   }
 
-  &__price{
-    margin-top:  120px;
+  &__price {
+    margin-top: 120px;
     max-height: 48px;
     max-width: 120px;
-    
-     
+
     font-size: 15px;
     padding: 5px;
   }
 
   &__button {
-    
     &--submit {
       padding: 8px;
       color: #262431;

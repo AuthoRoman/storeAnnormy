@@ -5,22 +5,22 @@
       <MyHeader v-model="searchText" />
     </section>
     <PreviewComponent />
-    <StoreComponent :searchText = "searchText"/>
-    
+    <StoreComponent :searchText="searchText" />
   </div>
 </template>
 
 <script>
+import { defineComponent } from "vue";
 import MyHeader from "./UI/MyHeader.vue";
 import PreviewComponent from "./components/PreviewComponent.vue";
 import StoreComponent from "./components/StoreComponent.vue";
 
-export default {
+export default defineComponent({
   name: "App",
   components: {
     MyHeader,
     PreviewComponent,
-    StoreComponent
+    StoreComponent,
   },
 
   data() {
@@ -28,8 +28,7 @@ export default {
       searchText: "",
     };
   },
-   
-};
+});
 </script>
 
 <style>
@@ -64,8 +63,4 @@ export default {
 
   background-image: url("./assets/introMan.jpeg");
 }
-
- 
-
- 
 </style>

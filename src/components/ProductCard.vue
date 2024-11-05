@@ -7,7 +7,7 @@
           <div class="popup__inner">
             <div class="popup__image">
               {{ id }}
-              <img   :src="imgs" alt="" />
+              <img :src="imgs" alt="" />
             </div>
 
             <p class="popup__description">
@@ -27,7 +27,7 @@
       </PopupComponent>
     </Transition>
     <Transition>
-      <PopupProductCreate v-if="isPopupCreateVisible"/>
+      <PopupProductCreate v-if="isPopupCreateVisible" />
     </Transition>
 
     <div class="product_card" @click="showPopup">
@@ -45,14 +45,15 @@
 </template>
 
 <script>
+import { defineComponent } from "vue";
 import PopupComponent from "../components/ModalWindow.vue";
 import PopupProductCreate from "../components/PopupProductCreate.vue";
 
-export default {
+export default defineComponent({
   name: "ProductCard",
   components: {
     PopupComponent,
-    PopupProductCreate
+    PopupProductCreate,
   },
   props: {
     id: Number,
@@ -63,7 +64,7 @@ export default {
   data() {
     return {
       isPopupVisible: false,
-      isPopupCreateVisible: false
+      isPopupCreateVisible: false,
     };
   },
   methods: {
@@ -80,7 +81,7 @@ export default {
       this.isPopupCreateVisible = false;
     },
   },
-};
+});
 </script>
 
 <style lang="less" scoped>

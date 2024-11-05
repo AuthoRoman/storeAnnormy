@@ -7,7 +7,7 @@ module.exports = defineConfig({
   transpileDependencies: true,
   pages: {
     index: {
-      entry: "src/main.js",
+      entry: "src/main.ts",
       template: "public/index.html",
     },
   },
