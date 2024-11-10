@@ -44,44 +44,37 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-import { mapMutations } from "vuex";
-export default defineComponent({
-  name: "PopupProductCreate",
+<script setup>
+import { useProductStore } from "@/store/modules/product";
+import { onMounted, ref, useTemplateRef } from "vue";
 
-  data() {
-    return {
-      title: "",
-      imgSrc: "",
-      price: "",
-    };
-  },
+const productStore = useProductStore();
 
-  methods: {
-    ...mapMutations(["createProduct", "setVisible", "getFilterProductsArray"]),
+const title = ref("");
+const imgSrc = ref("");
+const price = ref("");
 
-    closePopup() {
-      this.setVisible(false);
-    },
-    submit() {
-      this.createProduct({
-        id: Math.random(Date.now()),
-        img: this.imgSrc,
-        card_text: this.title,
-        card_price: "$" + this.price,
-        optial: "lastest",
-      });
-      this.closePopup();
-    },
-  },
-  mounted() {
-    document.addEventListener("click", (item) => {
-      if (item.target === this.$refs["popup__global"]) {
-        this.closePopup();
-      }
-    });
-  },
+function closePopup() {
+  productStore.toggleVisibleCreatorPopup();
+}
+
+function submit() {
+  productStore.createProduct({
+    id: Math.random(Date.now()),
+    img: imgSrc.value,
+    card_text: title.value,
+    card_price: "$" + price.value,
+    optial: "lastest",
+  });
+  closePopup();
+}
+const popupCreate = useTemplateRef("popup__global");
+onMounted(() => {
+  document.addEventListener("click", (item) => {
+    if (item.target === popupCreate.value) {
+      closePopup();
+    }
+  });
 });
 </script>
 

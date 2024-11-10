@@ -1,43 +1,42 @@
 <template>
   <div class="store_pagination">
     <div>
-      <button class="pagination_button" type="button" @click="decrementpage">
+      <button
+        class="pagination_button"
+        type="button"
+        @click="productStore.decrementPage"
+      >
         Пред
       </button>
       <button
         class="pagination_button"
-        v-for="page in getNumPage"
+        v-for="page in productStore.getNumPage"
         :key="page"
         type="button"
-        @click="setCurrentNumberPage(page)"
+        @click="productStore.setCurrentNumberPage(page)"
       >
         {{ page }}
       </button>
 
-      <button class="pagination_button" type="button" @click="implementpage">
+      <button
+        class="pagination_button"
+        type="button"
+        @click="productStore.implementPage"
+      >
         След
       </button>
     </div>
 
-    <div class="subNotice_page">Текущая страница {{ getCurrentPage }}</div>
+    <div class="subNotice_page">
+      Текущая страница {{ productStore.getCurrentPage }}
+    </div>
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-import { mapGetters, mapActions, mapMutations } from "vuex";
+<script setup>
+import { useProductStore } from "../store/modules/product";
 
-export default defineComponent({
-  name: "StorePagination",
-
-  methods: {
-    ...mapActions(["implementpage", "decrementpage"]),
-    ...mapMutations(["setCurrentNumberPage"]),
-  },
-  computed: {
-    ...mapGetters(["getNumPage", "getCurrentPage"]),
-  },
-});
+const productStore = useProductStore();
 </script>
 
 <style lang="less" scoped>

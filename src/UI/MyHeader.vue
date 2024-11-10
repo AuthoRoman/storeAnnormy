@@ -51,24 +51,12 @@
   </header>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script setup>
+const model = defineModel();
 
-export default defineComponent({
-  name: "MyHeader",
-  model: {
-    props: {
-      value: String,
-      default: "",
-    },
-    event: "input",
-  },
-  methods: {
-    updateInput(event) {
-      this.$emit("input", event.target.value);
-    },
-  },
-});
+function updateInput(event) {
+  model.value = event.target.value;
+}
 </script>
 
 <style lang="less" scoped>

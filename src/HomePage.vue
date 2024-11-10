@@ -9,26 +9,13 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script setup>
+import { ref } from "vue";
 import MyHeader from "./UI/MyHeader.vue";
 import PreviewComponent from "./components/PreviewComponent.vue";
 import StoreComponent from "./components/StoreComponent.vue";
 
-export default defineComponent({
-  name: "App",
-  components: {
-    MyHeader,
-    PreviewComponent,
-    StoreComponent,
-  },
-
-  data() {
-    return {
-      searchText: "",
-    };
-  },
-});
+const searchText = ref("");
 </script>
 
 <style>

@@ -1,9 +1,9 @@
 <template>
   <div class="prodList">
     <div
-      v-for="(val, index) in getArray.slice(
-        (getCurrentPage - 1) * 4,
-        getCurrentPage * 4
+      v-for="(val, index) in productStore.getArray.slice(
+        (productStore.getCurrentPage - 1) * 4,
+        productStore.getCurrentPage * 4
       )"
       :key="index"
     >
@@ -17,58 +17,47 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script setup>
+import { watch } from "vue";
+import { useProductStore } from "../store/modules/product";
 import ProductCard from "./ProductCard.vue";
-import { mapGetters, mapActions, mapMutations } from "vuex";
 
-export default defineComponent({
-  name: "ProductList",
-  components: {
-    ProductCard,
+const props = defineProps({
+  searchTexts: {
+    type: String,
+    default: "",
   },
-  props: {
-    searchTexts: {
-      type: String,
-      default: "",
-    },
-    filter: {
-      type: String,
-      default: "lastest",
-    },
-    page: Number,
+  filter: {
+    type: String,
+    default: "lastest",
   },
-  data() {
-    return {};
-  },
-  computed: {
-    ...mapGetters(["getArray", "getCurrentPage", "getNumPage", "getInitArray"]),
-  },
-
-  methods: {
-    ...mapActions(["setFilterProductsArray"]),
-    ...mapMutations(["setCurrentNumberPage"]),
-    fetchData() {
-      if (this.getNumPage < this.getCurrentPage) {
-        this.setCurrentNumberPage(1);
-      }
-      this.setFilterProductsArray({
-        searchTexts: this.searchTexts,
-        filter: this.filter,
-      });
-    },
-  },
-  watch: {
-    searchTexts: {
-      handler: "fetchData",
-      immediate: true,
-    },
-    filter: "fetchData",
-    getCurrentPage: "fetchData",
-    getNumPage: "fetchData",
-    getInitArray: "fetchData",
-  },
+  page: Number,
 });
+const productStore = useProductStore();
+
+function fetchData() {
+  console.log("fetch!");
+  if (productStore.getNumPage < productStore.getCurrentPage) {
+    productStore.setCurrentNumberPage(1);
+  }
+  productStore.setFilterProductsArray({
+    searchTexts: props.searchTexts,
+    filter: props.filter,
+  });
+}
+
+// Watch the relevant properties to call fetchData as needed
+watch(
+  () => [
+    props.searchTexts,
+    props.filter,
+    productStore.getCurrentPage,
+    productStore.getNumPage,
+    productStore.getInitArray,
+  ],
+  fetchData,
+  { immediate: true }
+);
 </script>
 
 <style scoped>

@@ -27,25 +27,22 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script setup>
+import { onMounted, useTemplateRef } from "vue";
 
-export default defineComponent({
-  name: "PopupComponent",
+const emit = defineEmits(["closePopup"]);
 
-  return: {},
-  methods: {
-    closePopup() {
-      this.$emit("closePopup");
-    },
-  },
-  mounted() {
-    document.addEventListener("click", (item) => {
-      if (item.target === this.$refs["popup__global"]) {
-        this.closePopup();
-      }
-    });
-  },
+function closePopup() {
+  emit("closePopup");
+}
+
+const refPopup = useTemplateRef("popup__global");
+onMounted(() => {
+  document.addEventListener("click", (item) => {
+    if (item.target === refPopup) {
+      this.closePopup();
+    }
+  });
 });
 </script>
 

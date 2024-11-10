@@ -1,12 +1,14 @@
 <template>
   <section class="store">
     <div class="container">
-      <StoreHeader :filterProductsOptialActive="filterProductsOptialActive" />
+      <StoreHeader
+        :filterProductsOptialActive="productStore.filterProductsOptialActive"
+      />
       <div class="store_body">
         <ProductList
-          :search-texts="searchText"
-          :filter="filterProductsOptialActive"
-          :page="currentPage"
+          :search-texts="props.searchText"
+          :filter="productStore.filterProductsOptialActive"
+          :page="productStore.currentPage"
         />
 
         <StorePagination :currentPage="currentPage" />
@@ -15,35 +17,20 @@
   </section>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script setup>
 import ProductList from "./ProductList.vue";
 import StoreHeader from "./StoreHeader.vue";
 import StorePagination from "./StorePagination.vue";
-import { mapGetters } from "vuex";
+import { useProductStore } from "../store/modules/product";
 
-export default defineComponent({
-  name: "StoreComponent",
-  props: {
-    searchText: {
-      type: String,
-      default: "",
-    },
-  },
-  data() {
-    return {
-      currentPage: 1,
-    };
-  },
-  components: {
-    StoreHeader,
-    ProductList,
-    StorePagination,
-  },
-  computed: {
-    ...mapGetters(["filterProductsOptialActive"]),
+const props = defineProps({
+  searchText: {
+    type: String,
+    default: "",
   },
 });
+
+const productStore = useProductStore();
 </script>
 
 <style lang="less" scoped>

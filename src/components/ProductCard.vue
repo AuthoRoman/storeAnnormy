@@ -44,44 +44,27 @@
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script setup>
+import { ref } from "vue";
 import PopupComponent from "../components/ModalWindow.vue";
 import PopupProductCreate from "../components/PopupProductCreate.vue";
 
-export default defineComponent({
-  name: "ProductCard",
-  components: {
-    PopupComponent,
-    PopupProductCreate,
-  },
-  props: {
-    id: Number,
-    cardText: String,
-    cardPrice: String,
-    imgs: String,
-  },
-  data() {
-    return {
-      isPopupVisible: false,
-      isPopupCreateVisible: false,
-    };
-  },
-  methods: {
-    showPopup() {
-      this.isPopupVisible = true;
-    },
-    closeNowPopup() {
-      this.isPopupVisible = false;
-    },
-    showPopupCreate() {
-      this.isPopupCreateVisible = true;
-    },
-    closeNowPopupCreate() {
-      this.isPopupCreateVisible = false;
-    },
-  },
+const props = defineProps({
+  id: Number,
+  cardText: String,
+  cardPrice: String,
+  imgs: String,
 });
+
+const isPopupVisible = ref(false);
+const isPopupCreateVisible = ref(false);
+
+function showPopup() {
+  return (isPopupVisible.value = true);
+}
+function closeNowPopup() {
+  return (isPopupVisible.value = false);
+}
 </script>
 
 <style lang="less" scoped>

@@ -1,63 +1,57 @@
 <template>
   <div class="store_header">
     <span
-      :class="[filterProductsOptialActive === 'lastest' ? 'active' : '']"
+      :class="[props.filterProductsOptialActive === 'lastest' ? 'active' : '']"
       class="store_nav"
       @click="updateFilter('lastest')"
     >
       LASTEST
     </span>
     <span
-      :class="[filterProductsOptialActive === 'best sellers' ? 'active' : '']"
+      :class="[
+        props.filterProductsOptialActive === 'best sellers' ? 'active' : '',
+      ]"
       class="store_nav"
       @click="updateFilter('best sellers')"
     >
       BEST SELLERS
     </span>
     <span
-      :class="[filterProductsOptialActive === 'special' ? 'active' : '']"
+      :class="[props.filterProductsOptialActive === 'special' ? 'active' : '']"
       class="store_nav"
       @click="updateFilter('special')"
     >
       SPECIAL
     </span>
-    <span class="store_nav--active" @click="setVisible(!getSetVisibleCreator)">
+    <span
+      class="store_nav--active"
+      @click="productStore.toggleVisibleCreatorPopup()"
+    >
       CREATE NEW PRODUCT
     </span>
     <Transition>
-      <div v-if="getSetVisibleCreator">
+      <div v-if="productStore.getSetVisibleCreator">
         <PopupProductCreate />
       </div>
     </Transition>
   </div>
 </template>
 
-<script>
-import { mapMutations, mapGetters } from "vuex";
+<script setup lang="ts">
 import PopupProductCreate from "./PopupProductCreate.vue";
-import { defineComponent } from "vue";
 
-export default defineComponent({
-  name: "StoreHeader",
-  components: {
-    PopupProductCreate,
-  },
-  props: {
-    filterProductsOptialActive: {
-      type: String,
-      default: "lastest",
-    },
-  },
-  methods: {
-    ...mapMutations(["setVisible"]),
-    updateFilter(value) {
-      this.$store.dispatch("updateFilterProductsOptialActive", value);
-    },
-  },
-  computed: {
-    ...mapGetters(["getSetVisibleCreator"]),
+import { useProductStore } from "../store/modules/product";
+
+const props = defineProps({
+  filterProductsOptialActive: {
+    type: String,
+    default: "lastest",
   },
 });
+const productStore = useProductStore();
+function updateFilter(filter: string) {
+  productStore.updateFilterProductsOptialActive(filter);
+}
 </script>
 
 <style lang="less" scoped>
