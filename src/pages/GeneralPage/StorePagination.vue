@@ -34,7 +34,7 @@
 </template>
 
 <script setup>
-import { useProductStore } from "../store/modules/product";
+import { useProductStore } from "../../store/modules/product";
 
 const productStore = useProductStore();
 </script>
@@ -60,6 +60,7 @@ const productStore = useProductStore();
   cursor: pointer;
   transform: scale(1.15);
 }
+
 .pagination_button:active {
   cursor: pointer;
   transform: scale(1);

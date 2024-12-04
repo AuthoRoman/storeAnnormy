@@ -103,6 +103,7 @@
       flex-direction: column;
     }
   }
+
   &_nav_link {
     font-size: 21px;
     margin: 0 20px;
@@ -116,11 +117,13 @@
     &:last-child {
       margin: 0 0 0 20px;
     }
+
     &:hover {
       color: #c89351;
       cursor: pointer;
     }
   }
+
   &_cards {
     width: 100%;
     display: grid;
@@ -137,7 +140,7 @@
     align-items: center;
     justify-content: start;
     padding: 0 0 0 40px;
-    background-image: url("../assets/mira.png");
+    background-image: url("../../assets/mira.png");
     position: relative;
     background-size: 650px;
     height: 100%;
@@ -173,6 +176,7 @@
       );
     }
   }
+
   &_subcards2 {
     grid-area: 1 / 2 / 2 / 3;
     height: 100%;
@@ -190,6 +194,7 @@
     &:hover .subcards_text_inner {
       letter-spacing: 1px;
     }
+
     &:hover .blue {
       width: 100%;
       height: 100%;
@@ -214,6 +219,7 @@
       width: 100%;
       height: 100%;
     }
+
     &:hover .subcards_text_inner {
       letter-spacing: 1px;
     }
@@ -223,7 +229,7 @@
     position: relative;
     height: 100%;
     width: 100%;
-    background-image: url("../assets/sub4.png");
+    background-image: url("../../assets/sub4.png");
     background-repeat: no-repeat;
     background-size: 120%;
     background-position: right -250px bottom -380px;
@@ -287,6 +293,7 @@
   width: 85%;
   height: 85%;
 }
+
 .blue {
   border: 3px solid #2f2d3a;
 }
@@ -311,6 +318,7 @@
   &_title {
     font-size: 18px;
   }
+
   &_subtitle {
     font-weight: 900;
     font-size: 61px;
@@ -346,6 +354,7 @@
       cursor: pointer;
       transform: scale(1.15);
     }
+
     &:active {
       cursor: pointer;
       transform: scale(1);
@@ -357,6 +366,7 @@
   &_title {
     font-size: 21px;
   }
+
   &_subtitle {
     font-size: 37px;
     margin-bottom: 10px;
@@ -371,9 +381,11 @@
     display: flex;
     justify-content: center;
   }
+
   .preview_inner_nav_first {
     display: none;
   }
+
   .preview_inner_nav_end {
     display: none;
   }
@@ -394,12 +406,15 @@
   .preview_subcards1 {
     grid-area: 1 / 1 / 3 / 3;
   }
+
   .preview_subcards2 {
     grid-area: 1 / 3 / 2 / 4;
   }
+
   .preview_subcards3 {
     grid-area: 2 / 3 / 3 / 4;
   }
+
   .preview_subcards4 {
     grid-area: 3 / 1 / 4 / 4;
     background-position: right -100px bottom -390px;
@@ -420,12 +435,15 @@
   .preview_subcards1 {
     grid-area: 1 / 1 / 3 / 3;
   }
+
   .preview_subcards2 {
     grid-area: 3 / 1 / 4 / 2;
   }
+
   .preview_subcards3 {
     grid-area: 3 / 2 / 4 / 3;
   }
+
   .preview_subcards4 {
     grid-area: 4 / 1 / 5 / 3;
   }

@@ -46,8 +46,8 @@
 
 <script setup>
 import { ref } from "vue";
-import PopupComponent from "../components/ModalWindow.vue";
-import PopupProductCreate from "../components/PopupProductCreate.vue";
+import PopupComponent from "@/pages/GeneralPage/popups/ModalWindow.vue";
+import PopupProductCreate from "@/pages/GeneralPage/popups/PopupProductCreate.vue";
 
 const props = defineProps({
   id: Number,
@@ -62,6 +62,7 @@ const isPopupCreateVisible = ref(false);
 function showPopup() {
   return (isPopupVisible.value = true);
 }
+
 function closeNowPopup() {
   return (isPopupVisible.value = false);
 }
@@ -110,6 +111,7 @@ function closeNowPopup() {
     display: flex;
     align-items: center;
   }
+
   &__image {
     margin: 20px;
     display: flex;
@@ -120,6 +122,7 @@ function closeNowPopup() {
 
     width: 300px;
   }
+
   &__description {
     max-width: 500px;
   }

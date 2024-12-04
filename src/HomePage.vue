@@ -12,8 +12,8 @@
 <script setup>
 import { ref } from "vue";
 import MyHeader from "./UI/MyHeader.vue";
-import PreviewComponent from "./components/PreviewComponent.vue";
-import StoreComponent from "./components/StoreComponent.vue";
+import PreviewComponent from "@/pages/GeneralPage/PreviewComponent.vue";
+import StoreComponent from "@/pages/GeneralPage/StoreComponent.vue";
 
 const searchText = ref("");
 </script>

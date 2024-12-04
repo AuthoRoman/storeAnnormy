@@ -19,7 +19,7 @@
 
 <script setup>
 import { watch } from "vue";
-import { useProductStore } from "../store/modules/product";
+import { useProductStore } from "../../store/modules/product";
 import ProductCard from "./ProductCard.vue";
 
 const props = defineProps({

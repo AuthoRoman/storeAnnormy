@@ -38,9 +38,9 @@
 </template>
 
 <script setup lang="ts">
-import PopupProductCreate from "./PopupProductCreate.vue";
+import PopupProductCreate from "./popups/PopupProductCreate.vue";
 
-import { useProductStore } from "../store/modules/product";
+import { useProductStore } from "../../store/modules/product";
 
 const props = defineProps({
   filterProductsOptialActive: {
@@ -49,6 +49,7 @@ const props = defineProps({
   },
 });
 const productStore = useProductStore();
+
 function updateFilter(filter: string) {
   productStore.updateFilterProductsOptialActive(filter);
 }
@@ -67,12 +68,14 @@ function updateFilter(filter: string) {
   margin: 0 10px;
   transition: all 0.6s;
   font-weight: 500;
+
   &--active {
     font-size: 25px;
     color: #bcbcbc;
     margin: 0 10px;
     transition: all 0.6s;
     font-weight: 500;
+
     &:hover {
       cursor: pointer;
       color: #c89256;
@@ -88,6 +91,7 @@ function updateFilter(filter: string) {
 .active {
   color: #292a29;
 }
+
 .v-enter-active {
   transition: opacity 0.8s ease;
 }

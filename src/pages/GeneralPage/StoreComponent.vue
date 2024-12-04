@@ -21,7 +21,7 @@
 import ProductList from "./ProductList.vue";
 import StoreHeader from "./StoreHeader.vue";
 import StorePagination from "./StorePagination.vue";
-import { useProductStore } from "../store/modules/product";
+import { useProductStore } from "../../store/modules/product";
 
 const props = defineProps({
   searchText: {
